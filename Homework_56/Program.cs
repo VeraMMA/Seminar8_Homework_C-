@@ -11,7 +11,7 @@ static void Print(string word)
         {
             System.Console.WriteLine(word);
         }
-            Print("Найдите среднее арифметическое элементов в каждом столбце.");
+            Print("Найдите строку c наименьшей суммой элементов.");
 
         void FillMatrix(int [,] matr)
         { Print("Заполните массив целыми числами");
@@ -40,26 +40,30 @@ static void Print(string word)
                 }   
             }
 
-          void SumMatrix(int [,] matr)
+             void MaxRow(int [,] matr)
             {  Print("Среднее арифметическое каждого столбца");
-                 for (int rows = 0; rows < matr.GetLength(1); rows++)
+                 for (int rows = 0; rows < matr.GetLength(0); rows++)
                 {     Double summa = 0;
-                    for (int columns = 0; columns < matr.GetLength(0); columns++)
+                    for (int columns = 0; columns < matr.GetLength(1); columns++)
                     {
-                       summa = summa + matr[columns, rows];
+                       summa = summa + matr[rows, columns];
                     }
                      Double sumOfCol = summa/matr.GetLength(0);
                         sumOfCol = Math.Round(sumOfCol, 1);
                     System.Console.WriteLine(sumOfCol);
+
+                
                 }   
+
             }
 
 
-             int [,] matrix = new int [3, 4];
+
+             int [,] matrix = new int [4, 4];
              
               FillMatrix(matrix);
               PrintMatrix(matrix);
-              SumMatrix(matrix);
-                
+              MaxRow(matrix);
+              
         
 

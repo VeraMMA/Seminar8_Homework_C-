@@ -10,58 +10,49 @@ static void Print(string word)
 {
     System.Console.WriteLine(word);
 }
-           
-        void FillMatrix(int [,] matr)
-        { Print("Заполните массив целыми числами");
-            Random rand = new Random();
-            for (int rows = 0; rows < matr.GetLength(0); rows++)
+
+void FillMatrix(int[,,] matr)
+{
+    Print("Построчно вывести массив из неповторяющихся двузначных чисел, добавляя индексы каждого элемента");
+    Random rand = new Random();
+    for (int rows = 0; rows < matr.GetLength(0); rows++)
+    {
+        for (int columns = 0; columns < matr.GetLength(1); columns++)
+        {
+            for (int col = 0; col < matr.GetLength(1); col++)
             {
-                for (int columns = 0; columns < matr.GetLength(1); columns++)
-                {
 
-                    matr[rows, columns] = rand.Next(1, 10);
+                matr[rows, columns, col] = rand.Next(1, 100);
 
-                }
             }
+
+
         }
+    }
+}
 
-            void PrintMatrix(int [,] matr)
-            { Print("Вывод массива");
-                for (int rows = 0; rows < matr.GetLength(0); rows++)
-                {
-                    for (int columns = 0; columns < matr.GetLength(1); columns++)
-                    {
-                        Console.Write($"{matr[rows, columns]}\t");
+void PrintMatrix(int[,,] matr)
+{
+    Print("Вывод массива");
+    for (int rows = 0; rows < matr.GetLength(0); rows++)
+    {
+        for (int columns = 0; columns < matr.GetLength(1); columns++)
+        {
+            for (int col = 0; col < matr.GetLength(1); col++)
+            {
+                Console.Write($"{matr[rows, columns, col]}\t");
 
-                    }
-                    System.Console.WriteLine();
-                }   
             }
+             System.Console.WriteLine();
+        }
+       
+    }
+}
 
 
-            void FindElement(int [,] matr, int element)
-            { 
-                bool find = false;
-                for (int rows = 0; rows < matr.GetLength(0); rows++)
-                {
-                    for (int columns = 0; columns < matr.GetLength(1); columns++)
-                    {
-                       if (matr[rows, columns] == element)
-                       {
-                        Console.Write($"Ваше число находится в координате: {rows} + {columns}\t");
-                        find = true;
-                       }  
-                    }
-                    if (!find)
-                       {
-                       Console.Write("такого числа в массиве нет");
-                       }break;
-                }   
-            }
 
-int [,] matrix = new int [3, 4];
-      Print("Введите число");
-      int element = Convert.ToInt32(Console.ReadLine());       
-              FillMatrix(matrix);
-              PrintMatrix(matrix);
-              FindElement(matrix, element);
+
+int[,,] matrix = new int[2, 2, 2];
+
+FillMatrix(matrix);
+PrintMatrix(matrix);
