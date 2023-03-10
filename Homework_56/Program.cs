@@ -41,23 +41,18 @@ static void Print(string word)
             }
 
              void MaxRow(int [,] matr)
-            {  Print("Среднее арифметическое каждого столбца");
+            {  Print("Сумма элементов в каждой строке");
                  for (int rows = 0; rows < matr.GetLength(0); rows++)
                 {     Double summa = 0;
                     for (int columns = 0; columns < matr.GetLength(1); columns++)
                     {
                        summa = summa + matr[rows, columns];
                     }
-                     Double sumOfCol = summa/matr.GetLength(0);
-                        sumOfCol = Math.Round(sumOfCol, 1);
-                    System.Console.WriteLine(sumOfCol);
+                    System.Console.WriteLine(summa);
 
-                
                 }   
 
             }
-
-
 
              int [,] matrix = new int [4, 4];
              

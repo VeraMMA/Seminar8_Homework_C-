@@ -9,61 +9,68 @@
 // 9 5 3 2
 // 8 4 4 2
 
-        static void Print(string word)
+static void Print(string word)
+{
+    System.Console.WriteLine(word);
+}
+Print("Упорядочить в порядке убывания элементы каждой строки двумерного массива.");
+
+void FillMatrix(int[,] matr)
+{
+    Random rand = new Random();
+
+    for (int rows = 0; rows < matr.GetLength(0); rows++)
+    {
+        for (int columns = 0; columns < matr.GetLength(1); columns++)
         {
-            System.Console.WriteLine(word);
+
+            matr[rows, columns] = rand.Next(1, 10);
+
         }
-            Print("Упорядочить в порядке убывания элементы каждой строки двумерного массива.");
+    }
+}
 
-        void FillMatrix(int[,] matr)
-        {   
-            Random rand = new Random();
+void PrintMatrix(int[,] matr)
+{
+    for (int rows = 0; rows < matr.GetLength(0); rows++)
+    {
+        for (int columns = 0; columns < matr.GetLength(1); columns++)
+        {
+            Console.Write($"{matr[rows, columns]}\t");
 
-            for (int rows = 0; rows < matr.GetLength(0); rows++)
-            {
-                for (int columns = 0; columns < matr.GetLength(1); columns++)
-                {
-
-                    matr[rows, columns] = rand.Next(1, 10);
-
-                }
-            }
         }
+        System.Console.WriteLine();
+    }
+}
 
-            void PrintMatrix(int [,] matr)
+void SortToMin(int[,] matr)
+{
+    int temp;
+    for (int rows = 0; rows < matr.GetLength(0); rows++)
+    {
+        for (int columns = 0; columns < matr.GetLength(1); columns++)
+        {
+            for (int k = 0; k < matr.GetLength(1) - 1; k++)
             {
-                for (int rows = 0; rows < matr.GetLength(0); rows++)
+                if (matr[rows, columns] > matr[rows, k])
                 {
-                    for (int columns = 0; columns < matr.GetLength(1); columns++)
-                    {
-                        Console.Write($"{matr[rows, columns]}\t");
-
-                    }
-                    System.Console.WriteLine();
+                    temp = matr [rows, columns];
+                    matr[rows, columns] = matr[rows, k];
+                    matr [rows, k] = temp;
                 }
-            }
 
-             void SortToMin(int [,] matr)
-            {
-                for (int rows = 0; rows < matr.GetLength(0); rows++)
-                {
-                    for (int columns = 0; columns < matr.GetLength(1); columns++)
-                    {
-
-                        
-                        Console.Write($"{matr[rows, columns]}\t");
-
-                    }
-                    System.Console.WriteLine();
-                }
             }
 
 
-             int [,] matrix = new int [3, 4];
-             
-              FillMatrix(matrix);
-              PrintMatrix(matrix);
-              SortToMin(matrix);
+        }
+        System.Console.WriteLine();
+    }
+}
 
-        
+
+int[,] matrix = new int[3, 4];
+
+FillMatrix(matrix);
+PrintMatrix(matrix);
+SortToMin(matrix);
 
