@@ -21,7 +21,7 @@ void FillMatrix(int[,,] matr)
 
 void PrintElement(int[,,] matr)
 {Print("Вывод массива и индексов каждого элемента");
-    bool find = false;
+    
     for (int rows = 0; rows < matr.GetLength(0); rows++)
     {
         for (int columns = 0; columns < matr.GetLength(1); columns++)
@@ -33,7 +33,7 @@ void PrintElement(int[,,] matr)
                     if (matr[rows, columns, col] == item)
                        {
                         Console.Write($"{item} - ({rows}),({columns}),({col})\t");
-                        find = true;
+                       
                        } 
                 }  Console.WriteLine();
             }
