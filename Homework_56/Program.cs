@@ -20,9 +20,7 @@ static void Print(string word)
             {
                 for (int columns = 0; columns < matr.GetLength(1); columns++)
                 {
-
                     matr[rows, columns] = rand.Next(1, 10);
-
                 }
             }
         }
@@ -34,7 +32,6 @@ static void Print(string word)
                     for (int columns = 0; columns < matr.GetLength(1); columns++)
                     {
                         Console.Write($"{matr[rows, columns]}\t");
-
                     }
                     System.Console.WriteLine();
                 }   
@@ -49,9 +46,7 @@ static void Print(string word)
                        summa = summa + matr[rows, columns];
                     }
                     System.Console.WriteLine(summa);
-
                 }   
-
             }
 
              int [,] matrix = new int [4, 4];
