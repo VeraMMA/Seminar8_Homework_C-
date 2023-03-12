@@ -8,52 +8,72 @@
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки с 
 // наименьшей суммой элементов: 0 строка
 static void Print(string word)
+{
+    System.Console.WriteLine(word);
+}
+Print("Найдите строку c наименьшей суммой элементов.");
+
+void FillMatrix(int[,] matr)
+{
+    Print("Заполните массив целыми числами");
+    Random rand = new Random();
+    for (int rows = 0; rows < matr.GetLength(0); rows++)
+    {
+        for (int columns = 0; columns < matr.GetLength(1); columns++)
         {
-            System.Console.WriteLine(word);
+            matr[rows, columns] = rand.Next(1, 10);
         }
-            Print("Найдите строку c наименьшей суммой элементов.");
+    }
+}
 
-        void FillMatrix(int [,] matr)
-        { Print("Заполните массив целыми числами");
-            Random rand = new Random();
-            for (int rows = 0; rows < matr.GetLength(0); rows++)
+void PrintMatrix(int[,] matr)
+{
+    Print("Вывод массива");
+    for (int rows = 0; rows < matr.GetLength(0); rows++)
+    {
+        for (int columns = 0; columns < matr.GetLength(1); columns++)
+        {
+            Console.Write($"{matr[rows, columns]}\t");
+        }
+        System.Console.WriteLine();
+    }
+}
+
+void SummRow(int[,] matr)
+{
+    Print("Сумма элементов в каждой строке");
+    for (int rows = 0; rows < matr.GetLength(0); rows++)
+    {
+        bool uncount = false;
+        int summa = 0;
+        for (int columns = 0; columns < matr.GetLength(1); columns++)
+        {
+            summa = summa + matr[rows, columns];
+        }
+        int count = 1;
+        while (count < 2)
+        {
+            List<int> newArray = new List<int>() { };
+            newArray.Add(summa);
+            count++;
+
+            foreach (int item in newArray)
             {
-                for (int columns = 0; columns < matr.GetLength(1); columns++)
-                {
-                    matr[rows, columns] = rand.Next(1, 10);
-                }
+                System.Console.WriteLine("Сумма строк:" + item);  
             }
-        }
+            uncount = true;
+           
+        }   
+    }
+}
 
-            void PrintMatrix(int [,] matr)
-            { Print("Вывод массива");
-                for (int rows = 0; rows < matr.GetLength(0); rows++)
-                {
-                    for (int columns = 0; columns < matr.GetLength(1); columns++)
-                    {
-                        Console.Write($"{matr[rows, columns]}\t");
-                    }
-                    System.Console.WriteLine();
-                }   
-            }
 
-             void MaxRow(int [,] matr)
-            {  Print("Сумма элементов в каждой строке");
-                 for (int rows = 0; rows < matr.GetLength(0); rows++)
-                {     Double summa = 0;
-                    for (int columns = 0; columns < matr.GetLength(1); columns++)
-                    {
-                       summa = summa + matr[rows, columns];
-                    }
-                    System.Console.WriteLine(summa);
-                }   
-            }
 
-             int [,] matrix = new int [4, 4];
-             
-              FillMatrix(matrix);
-              PrintMatrix(matrix);
-              MaxRow(matrix);
-              
-        
+
+int[,] matrix = new int[4, 4];
+int[] newArr = new int[4];
+FillMatrix(matrix);
+PrintMatrix(matrix);
+SummRow(matrix);
+
 
