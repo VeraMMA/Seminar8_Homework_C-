@@ -56,18 +56,17 @@ void SummRow(int[,] matr)
             List<int> newArray = new List<int>() { };
             newArray.Add(summa);
             count++;
-
             foreach (int item in newArray)
             {
                 System.Console.WriteLine("Сумма строк:" + item);  
-            }
-            uncount = true;
-           
-        }   
-    }
-}
-
-
+            } 
+            int maxValue = newArray.Max();
+            int maxIndex = newArray.IndexOf(maxValue);
+            System.Console.WriteLine(maxValue);
+            System.Console.WriteLine(maxIndex);
+        }   uncount = true;
+    }       
+}          
 
 
 int[,] matrix = new int[4, 4];
@@ -76,4 +75,5 @@ FillMatrix(matrix);
 PrintMatrix(matrix);
 SummRow(matrix);
 
-
+ 
+      
